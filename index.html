@@ -1,0 +1,1199 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#100b10">
+<title>Para Gabriella ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #100b10;
+  --wine: #321824;
+  --pink: #e9a2b8;
+  --cream: #f7eee8;
+  --muted: #c8b8bc;
+  --gold: #d9bd8c;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 75px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+body.locked { overflow: hidden; }
+
+button, a { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; }
+
+::selection { background: #e9a2b855; }
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: .07;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, p { margin-top: 0; }
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+}
+
+.eyebrow, .kicker {
+  color: var(--pink);
+  font-size: .68rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+}
+
+/* ABERTURA CINEMATOGRÁFICA */
+
+.cinematic {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  overflow: hidden;
+  background: var(--bg);
+  transition: opacity 1.2s ease, visibility 1.2s;
+}
+
+.cinematic::before {
+  content: "";
+  position: absolute;
+  inset: -3%;
+  background:
+    linear-gradient(0deg, #100b10 0%, #100b10a8 45%, #100b1040 100%),
+    url('imagens/principal.jpg') center 40% / cover;
+  animation: zoomLento 15s ease-in-out infinite alternate;
+}
+
+.cinematic::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid #f7eee82c;
+  pointer-events: none;
+}
+
+.cinematic-inner {
+  position: relative;
+  z-index: 1;
+  width: min(700px, 88%);
+  animation: aparecer 1.5s both;
+}
+
+.cinematic h1 {
+  font-size: clamp(4rem, 12vw, 8rem);
+  line-height: .88;
+  margin: 28px 0;
+}
+
+.cinematic h1 em {
+  display: block;
+  color: var(--pink);
+  font-weight: 400;
+}
+
+.cinematic p {
+  max-width: 440px;
+  margin: 25px auto 32px;
+  color: #f7eee8d1;
+  font-size: .95rem;
+}
+
+.enter {
+  padding: 15px 25px;
+  color: var(--cream);
+  background: #e9a2b817;
+  border: 1px solid #e9a2b8a8;
+  border-radius: 100px;
+  transition: .3s;
+}
+
+.enter:hover {
+  background: var(--pink);
+  color: #28131c;
+  transform: translateY(-3px);
+}
+
+.enter span { margin-left: 12px; }
+
+.sound-note {
+  font-size: .68rem !important;
+  letter-spacing: .08em;
+  opacity: .7;
+}
+
+.cinematic.closed {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* MENU */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  padding: 12px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(#100b10e8, transparent);
+  backdrop-filter: blur(5px);
+}
+
+.logo {
+  text-decoration: none;
+  color: var(--pink);
+  font: italic 1.6rem 'Cormorant Garamond', serif;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+nav a {
+  color: #f7eee8c4;
+  text-decoration: none;
+  font-size: .69rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+nav a:hover { color: var(--pink); }
+
+.menu-toggle {
+  display: none;
+  border: 1px solid #ffffff35;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  color: var(--cream);
+  background: #100b1099;
+}
+
+/* PRIMEIRA CENA */
+
+.hero {
+  min-height: 100svh;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 150px 8% 12vh;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -2%;
+  z-index: -2;
+  background: url('imagens/principal.jpg') center 35% / cover;
+  animation: zoomLento 22s ease-in-out infinite alternate;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, #100b10ed 0%, #100b10a8 48%, #100b1030 100%),
+    linear-gradient(0deg, #100b10 0%, transparent 45%);
+}
+
+.hero-content { max-width: 800px; }
+
+.hero h2 {
+  font-size: clamp(3.7rem, 9.5vw, 8.5rem);
+  line-height: .87;
+  letter-spacing: -.035em;
+  margin: 24px 0;
+}
+
+.hero h2 em {
+  display: block;
+  color: var(--pink);
+  font-weight: 400;
+}
+
+.hero-copy {
+  max-width: 490px;
+  color: #f7eee8d0;
+  margin: 28px 0;
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  padding: 13px 21px;
+  background: var(--pink);
+  color: #28131c;
+  border-radius: 100px;
+  text-decoration: none;
+  font-size: .8rem;
+  font-weight: 600;
+  transition: .3s;
+}
+
+.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 40px #e9a2b82c;
+}
+
+.scroll-note {
+  position: absolute;
+  right: 6%;
+  bottom: 10%;
+  writing-mode: vertical-rl;
+  color: #f7eee887;
+  font-size: .65rem;
+  letter-spacing: .2em;
+}
+
+/* SEÇÕES */
+
+section.content { padding: 115px 7%; }
+
+.section-wrap {
+  width: min(1050px, 100%);
+  margin: auto;
+}
+
+.center { text-align: center; }
+
+.section-title {
+  font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+  line-height: .98;
+  letter-spacing: -.025em;
+  margin: 18px 0 25px;
+}
+
+.section-intro {
+  max-width: 570px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.center .section-intro { margin: auto; }
+
+/* CARTA */
+
+.opening-note {
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 0%, #4a2635 0%, var(--bg) 72%);
+}
+
+.note-card {
+  max-width: 760px;
+  margin: 50px auto 0;
+  padding: clamp(28px, 6vw, 65px);
+  border: 1px solid #e9a2b82e;
+  background: #ffffff04;
+  position: relative;
+  text-align: left;
+}
+
+.note-card::before, .note-card::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-color: var(--gold);
+  border-style: solid;
+  opacity: .65;
+}
+
+.note-card::before {
+  top: 12px;
+  left: 12px;
+  border-width: 1px 0 0 1px;
+}
+
+.note-card::after {
+  bottom: 12px;
+  right: 12px;
+  border-width: 0 1px 1px 0;
+}
+
+.note-card p {
+  font: 400 clamp(1.15rem, 2.4vw, 1.5rem)/1.8 'Cormorant Garamond', serif;
+  color: #f7eee8df;
+}
+
+.note-card .salutation {
+  font-size: 2.3rem;
+  color: var(--pink);
+  font-style: italic;
+}
+
+.note-card .sign {
+  color: var(--pink);
+  font-style: italic;
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+/* LINHA DO TEMPO */
+
+.timeline-section { background: #171016; }
+
+.timeline {
+  max-width: 780px;
+  margin: 60px auto 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(var(--pink), #d9bd8c66, transparent);
+}
+
+.event {
+  position: relative;
+  padding: 0 0 60px 68px;
+}
+
+.event:last-child { padding-bottom: 0; }
+
+.event::before {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--pink);
+  box-shadow: 0 0 22px #e9a2b855;
+}
+
+.date {
+  color: var(--gold);
+  font-size: .7rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.event h3 {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.05;
+  margin: 12px 0;
+}
+
+.event p {
+  max-width: 620px;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.event .little {
+  color: var(--pink);
+  font: italic 1.3rem 'Cormorant Garamond', serif;
+  margin-top: 16px;
+}
+
+/* CENA DO PEDIDO */
+
+.boat {
+  min-height: 85svh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 100px 8%;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.boat::before {
+  content: "";
+  position: absolute;
+  inset: -2%;
+  z-index: -2;
+  background: url('imagens/WhatsApp Image 2026-10-26 at 11.59.06 (8).jpeg') center 45% / cover;
+  animation: zoomLento 22s ease-in-out infinite alternate;
+}
+
+.boat::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, #100b10e8 0%, #100b1099 58%, #100b1033 100%),
+              linear-gradient(0deg, #100b10 0%, transparent 45%);
+}
+
+.boat-inner { max-width: 690px; }
+
+.boat h2 {
+  font-size: clamp(3.7rem, 8.5vw, 7.5rem);
+  line-height: .9;
+  margin: 22px 0;
+}
+
+.boat h2 em { color: var(--pink); }
+
+.boat p { max-width: 540px; color: #f7eee8dd; }
+
+.boat .quote {
+  font: italic clamp(1.4rem, 3vw, 2.1rem)/1.4 'Cormorant Garamond', serif;
+  margin-top: 32px;
+}
+
+/* GALERIA */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+  margin-top: 45px;
+}
+
+.photo {
+  position: relative;
+  grid-column: span 5;
+  min-height: 390px;
+  padding: 0;
+  border: 0;
+  background: #24151e;
+  overflow: hidden;
+  cursor: zoom-in;
+  text-align: left;
+}
+
+.photo:nth-child(1), .photo:nth-child(4) {
+  grid-column: span 7;
+}
+
+.photo:nth-child(5), .photo:nth-child(6) {
+  grid-column: span 6;
+  min-height: 330px;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  filter: saturate(.8);
+  transition: transform .8s, filter .5s;
+}
+
+.photo:hover img {
+  transform: scale(1.045);
+  filter: saturate(1);
+}
+
+.photo::after {
+  content: "";
+  position: absolute;
+  inset: 40% 0 0;
+  background: linear-gradient(transparent, #100b10d9);
+}
+
+.photo span {
+  position: absolute;
+  z-index: 1;
+  left: 20px;
+  bottom: 18px;
+  font: italic 1.5rem 'Cormorant Garamond', serif;
+}
+
+/* THAITA */
+
+.thaita-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+  align-items: center;
+  margin-top: 35px;
+}
+
+.thaita-image {
+  min-height: 500px;
+  position: relative;
+  background: #26151f;
+}
+
+.thaita-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thaita-image::after {
+  content: "";
+  position: absolute;
+  inset: 13px;
+  border: 1px solid #f7eee86b;
+  pointer-events: none;
+}
+
+.thaita-copy p { color: var(--muted); }
+
+.thaita-copy blockquote {
+  font: italic 1.8rem/1.35 'Cormorant Garamond', serif;
+  color: var(--pink);
+  margin: 30px 0 0;
+  padding-left: 20px;
+  border-left: 1px solid var(--gold);
+}
+
+/* MOTIVOS */
+
+.reasons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: #e9a2b82e;
+  border: 1px solid #e9a2b82e;
+  margin-top: 45px;
+}
+
+.reason {
+  padding: 32px;
+  background: #130d13;
+}
+
+.reason .num {
+  color: var(--gold);
+  font-size: .7rem;
+  letter-spacing: .2em;
+}
+
+.reason h3 {
+  font-size: 1.9rem;
+  margin: 12px 0;
+}
+
+.reason p { color: var(--muted); margin: 0; }
+
+/* SURPRESA */
+
+.secret-section {
+  background: radial-gradient(ellipse at 50% 30%, #492333 0%, #100b10 68%);
+  text-align: center;
+  padding-bottom: 140px !important;
+}
+
+.secret-wrap { max-width: 740px; margin: auto; }
+
+.locked-note {
+  color: var(--muted);
+  max-width: 460px;
+  margin: 0 auto 30px;
+}
+
+.secret-button {
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  border: 1px solid #e9a2b87a;
+  background: #e9a2b80d;
+  color: var(--pink);
+  font-size: 3rem;
+  box-shadow: 0 0 0 12px #e9a2b808, 0 0 60px #e9a2b812;
+  transition: .5s;
+}
+
+.secret-button:hover { transform: scale(1.05); background: #e9a2b81c; }
+
+.secret-label {
+  display: block;
+  margin-top: 22px;
+  color: var(--gold);
+  font-size: .7rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.secret-letter {
+  display: none;
+  text-align: left;
+  margin: 45px auto 0;
+  padding: clamp(25px, 6vw, 55px);
+  background: #f3e7dd;
+  color: #35202a;
+  box-shadow: 0 25px 90px #0005;
+}
+
+.secret-letter.visible { display: block; animation: aparecer .8s both; }
+
+.secret-letter .paper-title {
+  font: italic 2.2rem 'Cormorant Garamond', serif;
+  color: #7c3d55;
+}
+
+.secret-letter p {
+  font: 400 1.25rem/1.8 'Cormorant Garamond', serif;
+}
+
+.secret-letter .signature {
+  font: italic 1.65rem 'Cormorant Garamond', serif;
+  color: #7c3d55;
+}
+
+/* ÚLTIMA CENA */
+
+.last-frame {
+  min-height: 85svh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 100px 7%;
+  background: linear-gradient(0deg, #100b10 0%, #100b106b 100%),
+              url('imagens/principal.jpg') center 38% / cover;
+}
+
+.last-frame h2 {
+  font-size: clamp(3.8rem, 9vw, 8rem);
+  line-height: .9;
+  margin: 25px 0;
+}
+
+.last-frame h2 em { color: var(--pink); }
+
+.last-frame p {
+  color: #f7eee8d9;
+  max-width: 500px;
+  margin: auto;
+}
+
+.final-heart {
+  color: var(--pink);
+  font-size: 2rem;
+  animation: heartbeat 2s infinite;
+}
+
+footer {
+  padding: 28px 20px;
+  text-align: center;
+  color: #b6a4aa;
+  font-size: .72rem;
+  letter-spacing: .06em;
+  border-top: 1px solid #ffffff10;
+}
+
+/* ANIMAÇÕES E LIGHTBOX */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .9s ease, transform .9s ease;
+}
+
+.reveal.seen { opacity: 1; transform: none; }
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  background: #090609f2;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+.lightbox.visible { display: flex; }
+
+.lightbox img {
+  max-width: 95vw;
+  max-height: 88svh;
+  object-fit: contain;
+}
+
+.lightbox button {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  background: #ffffff12;
+  color: white;
+  border: 1px solid #ffffff44;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.5rem;
+}
+
+.heart {
+  position: fixed;
+  z-index: 80;
+  pointer-events: none;
+  bottom: -30px;
+  color: var(--pink);
+  animation: floatHeart 4.5s ease-out forwards;
+  text-shadow: 0 0 18px #e9a2b866;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomLento {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+@keyframes floatHeart {
+  0% { opacity: 0; transform: translateY(0) scale(.7) rotate(0); }
+  15% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-110vh) scale(1.5) rotate(30deg); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.09); }
+  45% { transform: scale(.98); }
+  65% { transform: scale(1.06); }
+}
+
+@media(max-width:700px) {
+  header { padding: 12px 5%; }
+  .menu-toggle { display: block; }
+  nav {
+    display: none;
+    position: absolute;
+    top: 62px;
+    right: 5%;
+    padding: 20px;
+    background: #1a1019;
+    border: 1px solid #ffffff20;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    min-width: 190px;
+  }
+  nav.open { display: flex; }
+  .hero { padding: 130px 7% 12vh; }
+  .hero::after {
+    background: linear-gradient(0deg, #100b10 0%, #100b10b8 52%, #100b1040 100%);
+  }
+  .scroll-note { display: none; }
+  section.content { padding: 85px 7%; }
+  .boat { min-height: 78svh; padding: 90px 7%; }
+  .boat::after {
+    background: linear-gradient(0deg, #100b10f0 0%, #100b1085 100%);
+  }
+  .gallery { grid-template-columns: 1fr 1fr; gap: 9px; }
+  .photo:nth-child(n) { grid-column: span 1; min-height: 260px; }
+  .photo:nth-child(1) { grid-column: span 2; min-height: 380px; }
+  .photo span { left: 12px; bottom: 12px; font-size: 1.1rem; }
+  .thaita-layout { grid-template-columns: 1fr; gap: 30px; }
+  .thaita-image { min-height: 390px; }
+  .reasons { grid-template-columns: 1fr; }
+  .reason { padding: 24px; }
+  .timeline::before { left: 11px; }
+  .event { padding-left: 42px; }
+  .event::before { left: 4px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+
+<body class="locked">
+<div class="grain"></div>
+
+<!-- ABERTURA: A PRIMEIRA CENA -->
+<div class="cinematic" id="cinematic">
+  <div class="cinematic-inner">
+    <div class="eyebrow">Uma história que eu escolheria de novo</div>
+    <h1>Para <em>Gabriella.</em></h1>
+    <p>Existem momentos que passam. E existem aqueles que, sem percebermos, mudam a direção da nossa história.</p>
+    <button class="enter" id="enter">Começar o nosso filme <span>↗</span></button>
+    <p class="sound-note">Feito para ser lido devagar. Como tudo que vale a pena.</p>
+  </div>
+</div>
+
+<header>
+  <a class="logo" href="#inicio">A + G ♡</a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+  <nav id="nav">
+    <a href="#carta">Uma carta</a>
+    <a href="#historia">Nossa história</a>
+    <a href="#pedido">O pedido</a>
+    <a href="#fotos">Memórias</a>
+    <a href="#final">Surpresa</a>
+  </nav>
+</header>
+
+<main>
+  <!-- CENA 1 -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <span class="eyebrow">Capítulo um · Você e eu</span>
+      <h2>Algumas histórias<br>começam baixinho.<em>A nossa ficou.</em></h2>
+      <p class="hero-copy">No meio de tantos caminhos, pessoas e coincidências, a vida colocou você no meu. E, desde então, algumas datas passaram a significar muito mais do que números.</p>
+      <a class="primary" href="#carta">Entre na nossa história <span>↓</span></a>
+    </div>
+    <div class="scroll-note">Continue para descobrir</div>
+  </section>
+
+  <!-- CENA 2: CARTA -->
+  <section class="content opening-note" id="carta">
+    <div class="section-wrap">
+      <div class="center reveal">
+        <div class="kicker">Uma carta que eu queria que você sentisse</div>
+        <h2 class="section-title">Beh, isso é sobre nós.</h2>
+        <p class="section-intro">Não existe uma forma perfeita de explicar o que alguém passa a significar. Mas eu queria tentar.</p>
+      </div>
+      <article class="note-card reveal">
+        <p class="salutation">Minha Gabi,</p>
+        <p>Eu gosto de pensar que a nossa história não precisou começar com uma grande promessa. Ela começou com encontros, conversas e pequenos momentos que, sem fazer barulho, foram ganhando espaço dentro de mim.</p>
+        <p>Você se tornou alguém com quem eu quero dividir os dias bons, mas também aqueles em que nada parece tão simples. Quero estar perto enquanto você corre atrás dos seus sonhos, comemorar cada conquista sua e lembrar você, quando precisar, da força que tem para chegar onde deseja.</p>
+        <p>Não quero uma história perfeita. Quero uma história nossa: com conversa, parceria, respeito, risadas inesperadas e a tranquilidade de saber que podemos ser quem somos. Quero que o amor seja um lugar de descanso, não mais uma coisa com que precisamos nos preocupar.</p>
+        <p>Talvez eu não consiga colocar tudo em palavras. Por isso fiz este lugar: para guardar um pouco do que vivemos e te mostrar que, para mim, cada detalhe merece ser lembrado.</p>
+        <p class="sign">Com carinho, hoje e nos próximos capítulos,<br>Antonio ♡</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CENA 3: LINHA DO TEMPO -->
+  <section class="content timeline-section" id="historia">
+    <div class="section-wrap">
+      <div class="reveal">
+        <div class="kicker">Três datas. Um começo. Um futuro inteiro.</div>
+        <h2 class="section-title">Se um dia a memória falhar,<br>que estas datas fiquem.</h2>
+        <p class="section-intro">Às vezes, a gente só entende a importância de um instante depois que ele passa. Hoje, eu sei que alguns deles merecem um lugar só deles.</p>
+      </div>
+      <div class="timeline">
+        <article class="event reveal">
+          <div class="date">14 de agosto de 2026 · O primeiro beijo</div>
+          <h3>O instante em que algo mudou.</h3>
+          <p>Foi quando deixamos de ser apenas duas pessoas se aproximando e começamos, de verdade, a viver algo nosso. A partir daquele beijo, nasceu um compromisso — ainda que o mundo não precisasse saber de tudo, nós já sabíamos que aquilo tinha significado.</p>
+          <p class="little">Se eu pudesse voltar àquele instante, escolheria viver tudo outra vez.</p>
+        </article>
+        <article class="event reveal">
+          <div class="date">22 de agosto de 2026 · Conheci Thaita</div>
+          <h3>Conhecer você também era conhecer o seu mundo.</h3>
+          <p>Naquele dia, conheci Thaita — uma parte tão querida da sua vida. E entendi que gostar de você também era ter carinho pelas pequenas coisas que fazem parte de quem você é. Ela conquistou o seu espaço nessa história do jeito mais espontâneo possível.</p>
+          <p class="little">Acho bonito quando o amor encontra espaço também nos detalhes.</p>
+        </article>
+        <article class="event reveal">
+          <div class="date">9 de outubro de 2026 · O pedido de namoro</div>
+          <h3>O pôr do sol, a lancha e o meu sim para nós.</h3>
+          <p>Com o horizonte aberto, o sol se despedindo do dia e você ali comigo, transformei em palavras algo que já vinha crescendo dentro de mim. Eu quis que aquele pedido fosse especial porque você é especial para mim. Naquele cenário, escolhi te pedir para viver essa história oficialmente ao meu lado.</p>
+          <p class="little">O sol se pôs naquele dia. O que eu sinto não precisava terminar com ele.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CENA 4: PÔR DO SOL -->
+  <section class="boat" id="pedido">
+    <div class="boat-inner reveal">
+      <div class="kicker">9 · 10 · 2026 — o dia do nosso pedido</div>
+      <h2>O céu pintado<br>de <em>fim de tarde.</em></h2>
+      <p>Eu poderia ter escolhido mil cenários, mas aquele pôr do sol, a água ao redor e você na minha frente se tornaram o cenário certo. Não porque tudo precisava ser grandioso — mas porque eu queria que você guardasse aquele momento com carinho.</p>
+      <p class="quote">“Entre o sol indo embora e o começo de uma nova fase, eu escolhi você.”</p>
+    </div>
+  </section>
+
+  <!-- CENA 5: FOTOS -->
+  <section class="content" id="fotos">
+    <div class="section-wrap">
+      <div class="reveal">
+        <div class="kicker">Pequenos pedaços de eternidade</div>
+        <h2 class="section-title">Se estas fotos falassem…</h2>
+        <p class="section-intro">Elas contariam coisas que talvez só nós entendamos. Passe por elas devagar. Toque em uma foto para vê-la maior.</p>
+      </div>
+      <div class="gallery">
+        <button class="photo reveal" data-full="imagens/WhatsApp Image 2026-10-26 at 11.59.06 (2).jpeg" aria-label="Ampliar foto 1">
+          <img src="imagens/WhatsApp Image 2026-10-26 at 11.59.06 (2).jpeg" alt="Uma lembrança nossa" loading="lazy">
+          <span>O começo de tantas lembranças</span>
+        </button>
+        <button class="photo reveal" data-full="imagens/WhatsApp Image 2026-10-26 at 11.59.06 (8).jpeg" aria-label="Ampliar foto 2">
+          <img src="imagens/WhatsApp Image 2026-10-26 at 11.59.06 (8).jpeg" alt="Um momento especial juntos" loading="lazy">
+          <span>Um dia para guardar</span>
+        </button>
+        <button class="photo reveal" data-full="imagens/WhatsApp Image 2026-10-26 at 11.59.06 (4).jpeg" aria-label="Ampliar foto 3">
+          <img src="imagens/WhatsApp Image 2026-10-26 at 11.59.06 (4).jpeg" alt="Antonio e Gabriella" loading="lazy">
+          <span>Meu lugar favorito</span>
+        </button>
+        <button class="photo reveal" data-full="imagens/WhatsApp Image 2026-10-26 at 11.59.06 (3).jpeg" aria-label="Ampliar foto 4">
+          <img src="imagens/WhatsApp Image 2026-10-26 at 11.59.06 (3).jpeg" alt="Uma lembrança feliz" loading="lazy">
+          <span>O tipo de felicidade que fica</span>
+        </button>
+        <button class="photo reveal" data-full="imagens/WhatsApp Image 2026-10-26 at 11.59.06 (5).jpeg" aria-label="Ampliar foto 5">
+          <img src="imagens/WhatsApp Image 2026-10-26 at 11.59.06 (5).jpeg" alt="Mais um momento nosso" loading="lazy">
+          <span>Só a gente entende</span>
+        </button>
+        <button class="photo reveal" data-full="imagens/WhatsApp Image 2026-10-26 at 11.59.06 (7).jpeg" aria-label="Ampliar foto 6">
+          <img src="imagens/WhatsApp Image 2026-10-26 at 11.59.06 (7).jpeg" alt="Mais um capítulo da nossa história" loading="lazy">
+          <span>Ainda é só o começo</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CENA 6: THAITA -->
+  <section class="content timeline-section" id="thaita">
+    <div class="section-wrap">
+      <div class="thaita-layout">
+        <div class="thaita-image reveal">
+          <img src="imagens/thaita.jpg" alt="Thaita, uma integrante especial da nossa história" loading="lazy">
+        </div>
+        <div class="thaita-copy reveal">
+          <div class="kicker">Uma pequena parte de um amor enorme</div>
+          <h2 class="section-title">E então, veio Thaita. 🐾</h2>
+          <p>Conhecer Thaita foi conhecer mais um pedacinho do seu mundo. O carinho dela, o jeito de se aproximar e a presença tão própria fizeram com que ela também ganhasse um lugar especial na minha história com você.</p>
+          <p>Gosto de imaginar que, à maneira dela, Thaita percebeu que eu queria estar por perto. Não só nos momentos bonitos, mas na vida real: na rotina, nas pequenas alegrias e nos dias comuns que, quando compartilhados, acabam se tornando os mais preciosos.</p>
+          <blockquote>Talvez uma família comece assim: com carinho, presença e espaço para mais um coração.</blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CENA 7: O QUE DESEJO PARA NÓS -->
+  <section class="content">
+    <div class="section-wrap">
+      <div class="center reveal">
+        <div class="kicker">Não é uma lista. São coisas que eu quero cuidar.</div>
+        <h2 class="section-title">O que eu desejo para nós.</h2>
+        <p class="section-intro">Não prometo acertar sempre. Quero valorizar o que estamos construindo e lembrar por que escolhi estar aqui.</p>
+      </div>
+      <div class="reasons">
+        <article class="reason reveal">
+          <span class="num">01 / PARCERIA</span>
+          <h3>Torcer por você.</h3>
+          <p>Quero ver você conquistando os seus sonhos e estar ao seu lado para celebrar cada passo, inclusive os que parecem pequenos.</p>
+        </article>
+        <article class="reason reveal">
+          <span class="num">02 / LEVEZA</span>
+          <h3>Fazer o simples valer.</h3>
+          <p>Que a gente continue encontrando felicidade nas conversas, nos passeios, nas risadas e na tranquilidade de estar junto.</p>
+        </article>
+        <article class="reason reveal">
+          <span class="num">03 / VERDADE</span>
+          <h3>Poder ser quem somos.</h3>
+          <p>Quero que exista espaço para conversar com sinceridade, aprender, ajustar a rota e nunca precisar fingir perfeição.</p>
+        </article>
+        <article class="reason reveal">
+          <span class="num">04 / ESCOLHA</span>
+          <h3>Continuar escolhendo nós.</h3>
+          <p>Não só nos dias extraordinários, mas também nos dias comuns — porque é neles que uma história ganha raízes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CENA FINAL: CARTA ESCONDIDA -->
+  <section class="content secret-section" id="final">
+    <div class="secret-wrap">
+      <div class="kicker reveal">A última cena ainda está escondida</div>
+      <h2 class="section-title reveal">Antes de ir…<br>tem mais uma coisa.</h2>
+      <p class="locked-note reveal">Você chegou até aqui. Agora, toque no coração. O que está guardado nele é só seu.</p>
+      <button class="secret-button reveal" id="secretButton" aria-expanded="false" aria-controls="secretLetter" aria-label="Abrir a mensagem final">♡</button>
+      <span class="secret-label reveal" id="secretLabel">Toque para revelar a última mensagem</span>
+
+      <article class="secret-letter" id="secretLetter">
+        <div class="paper-title">Para a minha Beh,</div>
+        <p>Se você está lendo isso, chegou ao fim deste pequeno filme. Mas eu espero que tenha percebido uma coisa: eu não fiz esta página só para lembrar datas ou mostrar fotos. Fiz porque a nossa história merece ser celebrada — e porque você merece saber o quanto é importante para mim.</p>
+        <p>O nosso primeiro beijo, o dia em que conheci Thaita, o pedido naquela lancha enquanto o sol se punha… cada momento marca uma parte diferente do caminho que nos trouxe até aqui. E o mais bonito é que nenhum deles precisa ser o último grande momento.</p>
+        <p>Eu quero os próximos: as novas memórias, os planos que ainda vamos inventar, as vitórias que vou comemorar com você e até os dias simples que talvez pareçam pequenos agora, mas que um dia vamos lembrar sorrindo.</p>
+        <p>Não sei exatamente como serão todos os capítulos. Só sei que, hoje, fico feliz por escrever este com você. E se eu pudesse voltar ao começo, sabendo tudo o que sei agora, ainda teria vontade de me aproximar, te conhecer e descobrir o que poderíamos ser.</p>
+        <p>Obrigado por me deixar fazer parte da sua vida. Que a gente nunca perca a vontade de cuidar do que está construindo.</p>
+        <p class="signature">Eu escolho você, Gabi. Hoje — e em cada novo capítulo que a vida deixar a gente escrever. ♡<br><br>Antonio</p>
+        <div style="text-align:center;margin-top:30px">
+          <button class="enter" id="finalHearts">Guarde esse abraço ♡</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- EPÍLOGO -->
+  <section class="last-frame">
+    <div class="reveal">
+      <div class="final-heart">♡</div>
+      <div class="kicker">Fim deste filme. Começo de todo o resto.</div>
+      <h2>Minha pessoa.<br><em>Minha escolha.</em></h2>
+      <p>Feliz por aquele primeiro beijo. Feliz por aquele pôr do sol. Feliz por nós — e por tudo que ainda não vivemos.</p>
+      <p style="margin-top:25px;color:var(--pink);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem">Com amor, Antonio.</p>
+    </div>
+  </section>
+</main>
+
+<footer>Feito com carinho para Gabriella · 14.08.2026 — o começo de nós ♡</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button id="closeLightbox" aria-label="Fechar foto">×</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+(() => {
+  const $ = (selector, root = document) => root.querySelector(selector);
+
+  // A abertura só desaparece quando ela decide começar.
+  $('#enter').addEventListener('click', () => {
+    $('#cinematic').classList.add('closed');
+    document.body.classList.remove('locked');
+    setTimeout(() => $('#inicio').scrollIntoView({ behavior: 'smooth' }), 350);
+    hearts(18);
+  });
+
+  // Menu adaptado ao celular.
+  const menuToggle = $('#menuToggle');
+  const nav = $('#nav');
+
+  menuToggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(open));
+    menuToggle.textContent = open ? '×' : '☰';
+  });
+
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+    });
+  });
+
+  // Revelação gradual conforme a pessoa avança pelo filme.
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('seen');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+  } else {
+    document.querySelectorAll('.reveal').forEach(element => element.classList.add('seen'));
+  }
+
+  // Chuva delicada de corações.
+  function hearts(count = 25) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const symbols = ['♡', '♥', '✦', '✧'];
+
+    for (let i = 0; i < count; i++) {
+      const heart = document.createElement('span');
+      heart.className = 'heart';
+      heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      heart.style.left = (Math.random() * 96) + 'vw';
+      heart.style.fontSize = (14 + Math.random() * 24) + 'px';
+      heart.style.animationDelay = (Math.random() * 1.4) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5200);
+    }
+  }
+
+  // A carta final fica escondida até o toque.
+  $('#secretButton').addEventListener('click', () => {
+    const letter = $('#secretLetter');
+    const button = $('#secretButton');
+    const open = letter.classList.toggle('visible');
+
+    button.classList.toggle('open', open);
+    button.setAttribute('aria-expanded', String(open));
+    button.textContent = open ? '♥' : '♡';
+    $('#secretLabel').textContent = open
+      ? 'Uma última lembrança para guardar'
+      : 'Toque para revelar a última mensagem';
+
+    if (open) {
+      hearts(45);
+      setTimeout(() => letter.scrollIntoView({ behavior: 'smooth', block: 'center' }), 150);
+    }
+  });
+
+  $('#finalHearts').addEventListener('click', () => hearts(55));
+
+  // Fotos ampliáveis.
+  const lightbox = $('#lightbox');
+  const lightboxImg = $('#lightboxImg');
+
+  document.querySelectorAll('.photo').forEach(button => {
+    button.addEventListener('click', () => {
+      const image = $('img', button);
+      lightboxImg.src = button.dataset.full;
+      lightboxImg.alt = image.alt;
+      lightbox.classList.add('visible');
+      document.body.classList.add('locked');
+      $('#closeLightbox').focus();
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('visible');
+    document.body.classList.remove('locked');
+    lightboxImg.src = '';
+  }
+
+  $('#closeLightbox').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', event => {
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeLightbox();
+  });
+
+  // Ajuda a identificar caminhos de imagens incorretos no console.
+  document.querySelectorAll('img').forEach(image => {
+    image.addEventListener('error', () => {
+      console.warn('Imagem não encontrada:', image.getAttribute('src'));
+    });
+  });
+})();
+</script>
+</body>
+</html>
